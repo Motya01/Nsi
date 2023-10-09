@@ -1,67 +1,72 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <title>Binary & Decimal Converter</title>
-    <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-            background-color: #f2f2f2;
-        }
-        
-        .everything {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #fff;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-    </style>
+    <title>Binary and Decimal Converter</title>
 </head>
+<style>
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        background-color: #f2f2f2;
+    }
+
+    .everything {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+</style>
+
 <body>
     <div class="everything">
-        <h1>Binary to Decimal Converter</h1>
-        <p>Enter a binary number and click the button to convert it to decimal:</p>
-    
-        <input type="text" id="binaryInput" placeholder="Enter binary number">
-        <button onclick="convertBinaryToDecimal()">Convert</button>
-    
-        <p id="result"></p>
+        <h1>Binary and Decimal Converter</h1>
+
+        <div id="binaryToDecimal">
+            <h2>Binary to Decimal</h2>
+            <p>Enter a binary number and click the button to convert it to decimal:</p>
+
+            <input type="text" id="binaryInput" placeholder="Enter binary number">
+            <button onclick="convertBinaryToDecimal()">Convert</button>
+
+            <p id="binaryToDecimalResult"></p>
+        </div>
+
+        <div id="decimalToBinary">
+            <h2>Decimal to Binary</h2>
+            <p>Enter a decimal number and click the button to convert it to binary:</p>
+
+            <input type="number" id="decimalInput" placeholder="Enter decimal number">
+            <button onclick="convertDecimalToBinary()">Convert</button>
+
+            <p id="decimalToBinaryResult"></p>
+        </div>
 
         <script>
             function convertBinaryToDecimal() {
                 const binaryInput = document.getElementById("binaryInput").value;
-            
                 const decimalValue = parseInt(binaryInput, 2);
 
                 if (!isNaN(decimalValue)) {
-                    document.getElementById("result").innerHTML = `Decimal Value: ${decimalValue}`;
+                    document.getElementById("binaryToDecimalResult").innerHTML = `Decimal Value: ${decimalValue}`;
                 } else {
-                    document.getElementById("result").innerHTML = "Invalid binary input";
+                    document.getElementById("binaryToDecimalResult").innerHTML = "Invalid binary input";
                 }
             }
-        </script>
-    
-        <h1>Decimal to Binary Converter</h1>
-        <p>Enter a decimal number and click the button to convert it to binary:</p>
-    
-        <input type="number" id="decimalInput" placeholder="Enter decimal number">
-        <button onclick="convertDecimalToBinary()">Convert</button>
-    
-        <p id="result"></p>
 
-        <script>
             function convertDecimalToBinary() {
                 const decimalInput = document.getElementById("decimalInput").value;
-            
                 const binaryValue = (decimalInput >>> 0).toString(2);
 
                 if (!isNaN(binaryValue)) {
-                    document.getElementById("result").innerHTML = `Binary Value: ${binaryValue}`;
+                    document.getElementById("decimalToBinaryResult").innerHTML = `Binary Value: ${binaryValue}`;
                 } else {
-                    document.getElementById("result").innerHTML = "Invalid decimal input";
+                    document.getElementById("decimalToBinaryResult").innerHTML = "Invalid decimal input";
                 }
             }
         </script>
     </div>
 </body>
+
 </html>
