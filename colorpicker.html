@@ -2,22 +2,16 @@
 <html>
 <head>
     <title>Color Picker</title>
+    <link rel="stylesheet" href="mystyle.css">
 </head>
 <body>
-    <label for="colorPicker">Pick a color:</label>
-    <input type="color" id="colorPicker">
+    <div class="container">
+        <label for="colorPicker">Pick a color:</label>
+        <input type="color" id="colorPicker">
+    </div>
     
     <div id="selectedColor"></div>
-
-    <script>
-        const colorPicker = document.getElementById('colorPicker');
-        const selectedColor = document.getElementById('selectedColor');
-
-        colorPicker.addEventListener('input', (event) => {
-            const selectedValue = event.target.value;
-            selectedColor.style.backgroundColor = selectedValue;
-            selectedColor.textContent = selectedValue;
-        });
-    </script>
+    
+    <script src="colorpicker.js"></script>
 </body>
 </html>
