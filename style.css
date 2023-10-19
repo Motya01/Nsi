@@ -186,3 +186,5 @@ input[type="submit"] {
 input[type="submit"]:hover {
     background-color: #0056b3;
 }
+
+.button2 {background-color: #f44336;}
