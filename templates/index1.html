@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="SQL Frontend Interface">
+    <title>SQL Frontend Interface</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>SQL Frontend Interface</h1>
+        <textarea id="sql-query" placeholder="Write your SQL query here..."></textarea>
+        <button onclick="runSQL()">Run Query</button>
+        
+        <div id="output">
+            <h2>Results:</h2>
+            <pre id="results"></pre>
+        </div>
+    </div>
+
+    <script>
+        async function runSQL() {
+            const query = document.getElementById('sql-query').value;
+            const response = await fetch('/run_sql', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ query })
+            });
+            
+            const data = await response.json();
+            const resultsContainer = document.getElementById('results');
+            
+            if (data.success) {
+                resultsContainer.textContent = JSON.stringify(data.result, null, 2);
+            } else {
+                resultsContainer.textContent = `Error: ${data.error}`;
+            }
+        }
+    </script>
+</body>
+</html>
